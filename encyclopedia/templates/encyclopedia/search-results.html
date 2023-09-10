@@ -1,0 +1,28 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Search Resulits
+{% endblock %}
+
+{% block body %}
+    <main class="max-w-5xl mx-6 my-8">
+        <section>
+            <h1 class="text-3xl font-bold">Search results for {{ query }}:</h1>
+        </section>
+        <section>
+            {% if entries%}
+            <ul class="my-8 mx-2">
+                {% for entry in entries %}
+                    <li class="text-lg mb-2 text-blue-700 hover:text-blue-900">
+                        <a href="{% url 'single-post' title=entry %}">
+                            {{ entry }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <p>No matches found for "{{ query }}"</p>
+            {% endif %}
+        </section>
+    </main>   
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "encyclopedia/layout.html" %}
+{% block title %}
+Not Found
+{% endblock %}
+
+
+
+{% block body %}
+<main class="max-w-7xl mx-auto">
+    <h1 class="text-3xl font-bold mt-8 mb-6">{{ error_message }}</h1>
+    <div>
+        <a href="/" class="bg-blue-700 text-white hover:bg-blue-900 p-2">Go back home</a>
+    </div>
+</main>
+{% endblock %}

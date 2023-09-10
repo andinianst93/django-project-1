@@ -1,0 +1,33 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Create New Page
+{% endblock %}
+
+
+{% block body %}
+<main class="max-w-5xl mx-6 my-8">
+    <h1 class="text-2xl font-bold mt-4">Add New Post</h1>
+    {% if error_message %}
+    <p class="text-red-700 font-bold text-xl">{{ error_message }}</p>
+    {% endif%}
+    <form action="{% url 'create-post' %}" method="post" class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+        {% csrf_token %}
+        <div class="sm:col-span-4">
+            {{ new_post.title.label_tag }}
+        <div class="flex ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md mt-2">
+            {{ new_post.title }}
+        </div>
+        <div class="sm:col-span-4 mt-8">
+            {{ new_post.content.label_tag }}
+        </div>
+        <div class="flex ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-6xl mt-2 h-[540px]">
+            {{ new_post.content }}
+        </div>
+        <div class="mt-4">
+            <input type="submit" value="Published" class="bg-slate-700 text-white p-2">
+        </div>
+        </div>
+    </form>
+</main>
+{% endblock %}
